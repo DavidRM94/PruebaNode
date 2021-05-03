@@ -1,0 +1,23 @@
+version: "3.8"
+
+services:
+    mysqldb:
+        image: mysql:8.0
+        restart: always
+        environment: 
+            - MYSQL_DATABASE=usuarios_gim
+            - MYSQL_ROOT_PASSWORD=contra
+    
+    app:
+        container_name: dockernode
+        restart: always
+        build: .
+        ports: 
+            - 4000:3000
+        
+        depends_on: 
+            - mysqldb
+
+
+
+
